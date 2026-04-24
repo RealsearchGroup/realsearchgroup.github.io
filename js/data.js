@@ -9,6 +9,14 @@ var dataSet = [
     },
     {
         "type": "inproceedings",
+        "venue": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+        "author": "Mahzabin Tamanna, Yash Chandrani, Matthew Burrows, Brandon Wroblewski, Laurie Williams, Dominik Wermke",
+        "title": "Your Build Scripts Stink: The State of Code Smells in Build Scripts",
+        "year": "2025",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00246"
+    },
+    {
+        "type": "inproceedings",
         "venue": "ACM Workshop on Software Supply Chain Offensive Research and Ecosystem Defenses (SCORED)",
         "author": "Laurie Williams, Sammy Migues",
         "title": "Establishing a Baseline of Software Supply Chain Security Task Adoption by Software Organizations",
