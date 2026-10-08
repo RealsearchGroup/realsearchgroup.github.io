@@ -1,7 +1,7 @@
 ---
 name: Nusrat Zahan
 role: alum
-image: "/img/people/Nusrat.png"
+image: "/img/people/Nusrat.jpg"
 website: https://www.nzahan.net/
 linkedin: https://www.linkedin.com/in/n-zahan/
 github: nzahans
