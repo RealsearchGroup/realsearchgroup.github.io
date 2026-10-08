@@ -1,0 +1,22 @@
+{% comment %}
+Publications whose `authors` text contains this person's name or one of their aliases.
+{% endcomment %}
+{% assign person = include.person %}
+{% assign matched = "" | split: "" %}
+{% for pub in site.publications %}
+    {% assign hit = false %}
+    {% if pub.authors contains person.name %}{% assign hit = true %}{% endif %}
+    {% for alias in person.aliases %}
+        {% if pub.authors contains alias %}{% assign hit = true %}{% endif %}
+    {% endfor %}
+    {% if hit %}{% assign matched = matched | push: pub %}{% endif %}
+{% endfor %}
+{% if matched.size > 0 %}
+    <section class="person-pubs">
+        <h2>Publications</h2>
+        <div data-pubs>
+            {% include pub-groups.html pubs=matched %}
+        </div>
+        <nav class="pager" aria-label="Publications pages" hidden></nav>
+    </section>
+{% endif %}

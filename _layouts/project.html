@@ -1,13 +1,56 @@
 ---
 layout: default
 ---
+{% capture hero_src %}{% include img-url.html src=page.image %}{% endcapture %}
 
-{{ content }}
+<header class="entry-head">
+    <div class="entry-head-text">
+        <h1 class="entry-title">{{ page.title }}</h1>
+        {% if page.subtitle != null and page.subtitle != "" %}<p class="entry-subtitle">{{ page.subtitle }}</p>{% endif %}
+        {% if page.description %}<div class="entry-lead">{{ page.description | markdownify }}</div>{% endif %}
+    </div>
+    {% if page.image %}
+    <figure class="entry-figure">
+        <img src="{{ hero_src | strip }}" alt="{{ page.title }}">
+        {% if page.image_credit %}<figcaption>{{ page.image_credit }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+</header>
 
-<h2> People </h2>
-<section class="people project-people">
-    {% for uname in page.people %}
-        {% assign person = site.data.people[uname] %}
-        {% include person.html person=person image=true%}
+<div class="entry-body">
+    {{ content }}
+</div>
+
+{% assign related = "" | split: "" %}
+{% for pub in site.publications %}
+    {% if pub.project == page.slug %}{% assign related = related | push: pub %}{% endif %}
+{% endfor %}
+{% if related.size > 0 %}
+    <section class="project-pubs">
+        <h2>Related publications</h2>
+        <div data-pubs>
+            {% include pub-groups.html pubs=related %}
+        </div>
+        <nav class="pager" aria-label="Publications pages" hidden></nav>
+    </section>
+
+    {% comment %} Researchers are derived from the authors of the tagged papers. {% endcomment %}
+    {% assign researchers = "" | split: "" %}
+    {% for person in site.people %}
+        {% if person.role == "alum" %}{% continue %}{% endif %}
+        {% assign hit = false %}
+        {% for pub in related %}
+            {% if pub.authors contains person.name %}{% assign hit = true %}{% endif %}
+            {% for alias in person.aliases %}{% if pub.authors contains alias %}{% assign hit = true %}{% endif %}{% endfor %}
+        {% endfor %}
+        {% if hit %}{% assign researchers = researchers | push: person %}{% endif %}
     {% endfor %}
-</section>
+    {% if researchers.size > 0 %}
+        <section class="project-people">
+            <h2>Researchers</h2>
+            <div class="people-grid">
+                {% for person in researchers %}{% include person-card.html person=person %}{% endfor %}
+            </div>
+        </section>
+    {% endif %}
+{% endif %}

@@ -1,49 +1,25 @@
-
 {% assign picture = include.picture %}
 
 {% if picture.link %}
-    {% assign proj-url = picture.link %}
+    {% assign pic-url = picture.link %}
 {% else %}
-    {% capture proj-url %}{{site.base}}{{picture.url}}.html{% endcapture %}
+    {% capture pic-url %}{{ site.base }}{{ picture.url }}{% endcapture %}
 {% endif %}
 
-<div class="card">
-    <div class="card-body">
-        {% if picture.image %}
-            {% assign imgurl = picture.image %}
-            {% capture init %}{{ picture.image | slice: 0,1 }}{% endcapture %}
-            {% if init == "/" %}
-                {% capture imgurl %}{{site.base}}{{picture.image}}{% endcapture %}
-            {% endif %}
-            <a href="{{ proj-url }}">
-                <img class="img-fluid mb-3" src="{{imgurl}}" alt="{{picture.title}}"/>
-            </a>
-        {% endif %}
-        {% if picture.notitle != true %}
-            <h4 class="card-title">
-                {{  picture.title }}
-            </h4>
-        {% endif %}
-        {% if picture.subtitle != null and picture.subtitle != "" %}
-            <h6 class="card-subtitle mb-2 text-muted">
-                {{  picture.subtitle }}
-            </h6>
-        {% endif %}
-        <div class="card-text">
-            {{ picture.description | markdownify }}
-        </div>
-        {% if picture.no-link != true or picture.link %}
-            <a href="{{ proj-url }}"> Read more &raquo;</a>
-        {% endif %}
-    </div>
-    {% if picture.people %}
-        <div class="card-footer d-flex flex-row flex-wrap justify-content-center">
-            {% for uname in picture.people %}
-                <div>
-                    {% assign person = site.data.people[uname]  %}
-                    {% include person-image.html person=person %}
-                </div>
-            {% endfor %}
-        </div>
+{% capture imgurl %}{% include img-url.html src=picture.image %}{% endcapture %}
+
+<figure class="gallery-item">
+    {% if picture.image %}
+        <button type="button" class="gallery-thumb" data-full="{{ imgurl | strip }}" data-caption="{{ picture.title | escape }}" aria-label="Enlarge: {{ picture.title | escape }}">
+            <img src="{{ imgurl | strip }}" alt="{{ picture.title }}" loading="lazy"/>
+        </button>
     {% endif %}
-</div>
+    <figcaption class="gallery-caption">
+        {% if picture.notitle != true %}<h3 class="gallery-title">{{ picture.title }}</h3>{% endif %}
+        {% if picture.subtitle != null and picture.subtitle != "" %}<h4 class="gallery-subtitle">{{ picture.subtitle }}</h4>{% endif %}
+        <div class="gallery-desc">{{ picture.description | markdownify }}</div>
+        {% if picture.no-link != true or picture.link %}
+            <a class="card-more" href="{{ pic-url }}">Read more &raquo;</a>
+        {% endif %}
+    </figcaption>
+</figure>

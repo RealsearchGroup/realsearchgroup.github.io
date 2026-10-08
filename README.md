@@ -1,26 +1,27 @@
-## How to edit yourself or add someone in people
-- go to the yml file: `_data/people.yml`
-- find your corresponding yml entries and edit
-- or you can create a new yml entry, just look at the examples
-- for the time being, don't add anything in `bio` subentry, this will break the vertical justification. I am not comfortable with CSS 🥲
-- You can also add any other people as grad, undergrad, staff, alumni, or postdoc. Just follow examples in the yml files
+# Realsearch Research Group website
 
-## How to add a new publication
-- go to the javascript file: ```js/data.js```
-- in the ```dataset``` array variable, you just add a new array element
-- this new array element should have the attributes just like the other array elements in the `dataset` array
+Source for the Realsearch group website, built with [Jekyll](https://jekyllrb.com/).
 
-## How to add a new research description
-- go to the folder: `_projects`
-- create a new markdown file, make sure the name is unique and does not conflict with other filenames in the directory
-- put the contents in your new markdown file, there is one existing markdown file: `CTI-project.md` which will provide you the template. Just copy-paste the content of `CTI-project.md`file into your new file and edit accordingly.
+**To add or update people, publications, news, photos or projects, see [CONTRIBUTING.md](CONTRIBUTING.md).**
 
-## How to add a new photo in the gallery
-- go to the folder: `_pictures`
-- create a new markdown file, make sure the name is unique and does not conflict with other filenames in the directory
-- put the contents in your new markdown file, there are few existing markdown file, such as: `2019-12-01.md` which will provide you the template. Just copy-paste the content of `2019-12-01.md`file into your new file and edit accordingly.
+## Run locally
 
-## How to add a new posts in the news
-- go to the folder: `_posts`
-- create a new markdown file, make sure the name is unique and does not conflict with other filenames in the directory
-- put the contents in your new markdown file, there are few existing markdown file, such as: `2019-04-01-nasif-hotsos-2019.md` which will provide you the template. Just copy-paste the content of `2019-04-01-nasif-hotsos-2019.md`file into your new file and edit accordingly.
+```
+bundle install
+bundle exec jekyll serve
+```
+
+Then open http://127.0.0.1:4000. `ruby scripts/validate.rb` checks the people and publication files.
+
+## Layout
+
+| Path | Contents |
+|---|---|
+| `_people/` | one file per person |
+| `_publications/` | one file per paper |
+| `_posts/`, `_pictures/`, `_projects/` | news, gallery, research projects |
+| `_layouts/`, `_includes/` | page templates |
+| `css/group.scss`, `js/site.js` | styles and scripts |
+| `scripts/validate.rb` | data checks, also run by `.github/workflows/check.yml` |
+
+Originally based on [uwsampa/research-group-web](https://github.com/uwsampa/research-group-web/).

@@ -19,7 +19,8 @@ image: https://www.nsa.gov/portals/70/191231-D-IM742-2001.jpg?ver=2019-12-31-095
 link: false
 ---
 
-Research questions:
+## Research questions
+
 - Misuse. How can analysis techniques that identify misuse be constructed to incorporate context in terms of user expectations of behavior by other users and by software?
 - Modeling. How can accidental and malicious actions by users or software in disparate contexts be formalized as violations of contextually relevant norms that account for user expectations of runtime behavior of users and software?
 - Discrepancy. What automated reasoning methods identify discrepancies between user expectations and software implementations in a contextually relevant manner?

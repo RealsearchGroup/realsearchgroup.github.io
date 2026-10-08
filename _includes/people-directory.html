@@ -1,0 +1,27 @@
+{% comment %}
+Roles come from _config.yml, in order. Roles with `list: true` (alumni) are shown as a compact list,
+newest first by `left` year, then by `order`; the others are shown as photo cards.
+{% endcomment %}
+{% for role in site.roles %}
+    {% assign members = site.people | where: "role", role.key %}
+    {% if role.list %}{% assign also_members = site.people | where: "also", role.key %}{% assign members = members | concat: also_members %}{% endif %}
+    {% if members.size > 0 %}
+    <section class="role-section">
+        <h2 class="role-title">{{ role.name }}</h2>
+        {% if role.list %}
+            {% assign with_left = members | where_exp: "p", "p.left" | sort: "left" | reverse %}
+            {% assign without_left = members | where_exp: "p", "p.left == nil" | sort: "order" %}
+            <ul class="alumni-list">
+                {% for person in with_left %}{% include alumni-item.html person=person %}{% endfor %}
+                {% for person in without_left %}{% include alumni-item.html person=person %}{% endfor %}
+            </ul>
+        {% else %}
+            <div class="people-grid">
+                {% for person in members %}
+                    {% include person-card.html person=person %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+    {% endif %}
+{% endfor %}

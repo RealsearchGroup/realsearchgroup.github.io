@@ -19,7 +19,7 @@ image: /pictures/software-secret.jpeg
 link: false
 ---
 
-Research Contributions:
+## Research contributions
 
 - Understanding of the developer motivation and decision making related to checking in secrets.
 

@@ -1,0 +1,12 @@
+{% comment %}
+Publications grouped by year, newest first. Usage: {% include pub-groups.html pubs=array %}
+{% endcomment %}
+{% assign by_year = include.pubs | group_by: "year" | sort: "name" | reverse %}
+{% for group in by_year %}
+    <section class="pub-year" data-year-group="{{ group.name }}">
+        <h3 class="pub-year-title">{{ group.name }}</h3>
+        <ul class="pub-list">
+            {% for pub in group.items %}{% include pub-item.html pub=pub %}{% endfor %}
+        </ul>
+    </section>
+{% endfor %}

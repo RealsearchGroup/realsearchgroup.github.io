@@ -1,0 +1,7 @@
+{% assign person = include.person %}
+<a class="person-card" href="{{ site.base }}{{ person.url }}">
+    {% include avatar.html person=person size="lg" %}
+    <span class="person-card-name">{{ person.name }}</span>
+    {% if person.position %}<span class="person-card-position">{{ person.position }}</span>{% endif %}
+    {% if person.bio %}<span class="person-card-bio">{{ person.bio }}</span>{% endif %}
+</a>

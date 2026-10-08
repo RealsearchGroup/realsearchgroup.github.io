@@ -1,8 +1,24 @@
 ---
 layout: default
 ---
-<p class="date">{{ page.date | date: '%B %d, %Y' }}</p>
+<article class="news-post">
+    <a class="news-back" href="{{ site.base }}/blog.html">&laquo; All news</a>
+    <h1 class="news-post-title">{{ page.title }}</h1>
+    <p class="news-post-date"><span class="fa fa-fw fa-calendar-o"></span> {{ page.date | date: '%B %-d, %Y' }}</p>
 
-<div class="post">
-{{ content }}
-</div>
+    {% if page.image %}
+    {% capture post_img %}{% include img-url.html src=page.image %}{% endcapture %}
+    <img class="news-post-image" src="{{ post_img | strip }}" alt="">
+    {% endif %}
+
+    <div class="news-post-body entry-body">
+        {{ content }}
+    </div>
+
+    {% if page.previous or page.next %}
+    <nav class="news-pager" aria-label="More news">
+        {% if page.next %}<a class="news-newer" href="{{ site.base }}{{ page.next.url }}"><span>Newer</span>{{ page.next.title }}</a>{% else %}<span></span>{% endif %}
+        {% if page.previous %}<a class="news-older" href="{{ site.base }}{{ page.previous.url }}"><span>Older</span>{{ page.previous.title }}</a>{% endif %}
+    </nav>
+    {% endif %}
+</article>

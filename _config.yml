@@ -2,32 +2,36 @@ name: Realsearch Research Group
 url: 
 baseurl: 
 
-exclude: [bibble, README.md, Makefile, screenshot.png]
+exclude: [README.md, CONTRIBUTING.md, bibble, Makefile, screenshot.png, Gemfile, Gemfile.lock, vendor, trash, todo.txt, scripts]
 
 # colorize code snippets with the pygments module
-highlighter: pygments
+highlighter: rouge
 
 # The path structure for blog posts.
 permalink: /blog/:year/:month/:day/:title.html
 
-# Sections on the "people" page.
+# Sections on the "people" page (people with other roles are not listed).
 roles:
   - key: faculty
     name: Faculty
-  - key: staff
-    name: Staff
+    single: Faculty
   - key: postdoc
     name: Post Doc
+    single: Post Doc
   - key: grad
-    name: Graduate Students
-  - key: ugrad
-    name: Undergraduate Students
-  - key: ugrad-alum
-    name: Past Undergraduate Students
-  - key: collab
-    name: Collaborators
+    name: PhD Students
+    single: PhD Student
   - key: alum
     name: Alumni
+    single: Alum
+    list: true
+  - key: ms
+    name: Undergraduate and Masters Alumni
+    single: Undergraduate / Masters Alum
+    list: true
+
+# Show the Active/Sleeping badge on research project cards (set to true to bring it back).
+show_project_status: false
 
 # Number of news stories on the front page.
 front_page_news: 5
@@ -39,8 +43,23 @@ base: ''
 collections:
   projects:
     output: true
+    permalink: /projects/:path:output_ext
   pictures:
     output: true
+    permalink: /pictures/:path:output_ext
+  people:
+    output: true
+    permalink: /people/:name/
+  publications:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: people
+    values:
+      layout: person
+      notitle: true
 
 # Navigation bar links.
 navigation:

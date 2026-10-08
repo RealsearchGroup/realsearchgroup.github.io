@@ -3,15 +3,26 @@ layout: default
 title: Gallery
 ---
 
+<div class="view-toggle" role="group" aria-label="Gallery view">
+    <button type="button" class="active" data-view="list"><span class="fa fa-list"></span> List</button>
+    <button type="button" data-view="grid"><span class="fa fa-th"></span> Grid</button>
+</div>
 
-
-<div class="card-columns">
+<div class="gallery gallery-list" id="gallery">
     {% comment %}
-    Sort the projects by date, putting those without dates last
+    Sort the pictures by date, putting those without dates last
     {% endcomment %}
     {% assign pictures_by_date = site.pictures | sort: 'last-updated', 'first' %}
     {% assign pictures_by_date = pictures_by_date | reverse %}
     {% for p in pictures_by_date %}
     {% include picture-card.html picture=p %}
     {% endfor %}
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <figure>
+        <img id="lightbox-img" alt="">
+        <figcaption id="lightbox-caption"></figcaption>
+    </figure>
 </div>
