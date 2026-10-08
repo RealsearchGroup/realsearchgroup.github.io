@@ -189,7 +189,7 @@ ul.news {
     .card-title { font-size: 1.3rem; margin: 0 0 .2rem; a { color: $text; &:hover { color: $pink; text-decoration: none; } } }
     .card-subtitle { margin-top: 0; font-size: .95rem; color: $muted; font-weight: 500; margin-bottom: .6rem; }
     .card-text { color: #333; p:last-child { margin-bottom: .6rem; } }
-    &:not(:has(.card-media)) { grid-template-columns: 1fr; }
+    &.no-media { grid-template-columns: 1fr; }
 }
 .card-more { font-weight: 600; font-size: .95rem; }
 .status-badge {

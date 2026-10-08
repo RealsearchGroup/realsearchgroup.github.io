@@ -6,7 +6,7 @@
     {% capture proj-url %}{{ site.base }}{{ project.url }}{% endcapture %}
 {% endif %}
 
-<article class="card project-card">
+<article class="card project-card{% unless project.image %} no-media{% endunless %}">
     {% if project.image %}
         {% capture imgurl %}{% include img-url.html src=project.image %}{% endcapture %}
         <a class="card-media" href="{{ proj-url }}">
