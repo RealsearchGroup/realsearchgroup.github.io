@@ -23,5 +23,3 @@ Then open http://127.0.0.1:4000. `ruby scripts/validate.rb` checks the people an
 | `_layouts/`, `_includes/` | page templates |
 | `css/group.scss`, `js/site.js` | styles and scripts |
 | `scripts/validate.rb` | data checks, also run by `.github/workflows/check.yml` |
-
-Originally based on [uwsampa/research-group-web](https://github.com/uwsampa/research-group-web/).
