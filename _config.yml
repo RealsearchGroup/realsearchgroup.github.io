@@ -2,7 +2,7 @@ name: Realsearch Research Group
 url: 
 baseurl: 
 
-exclude: [README.md, CONTRIBUTING.md, bibble, Makefile, screenshot.png, Gemfile, Gemfile.lock, vendor, trash, todo.txt, scripts]
+exclude: [README.md, CONTRIBUTING.md, Makefile, Gemfile, Gemfile.lock, vendor, scripts]
 
 # colorize code snippets with the pygments module
 highlighter: rouge
