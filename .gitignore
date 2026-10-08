@@ -1,3 +1,7 @@
 .DS_Store
 _site
 /test-deploy.sh
+.jekyll-cache
+.jekyll-metadata
+Gemfile.lock
+.sass-cache

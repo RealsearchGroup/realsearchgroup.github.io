@@ -16,13 +16,12 @@ last-updated: 2024-06-28
 notitle: false
 nolink: false
 
-image: pictures/legal_scale_req.svg
+image: /pictures/legal_scale_req.svg
+image_credit: "Image attribution: 991joseph, CC0, via Wikimedia Commons"
 link: false
 ---
 
-Research Contributions:
- - [The Security Requirements Discoverer (SRD) framework for discovering goals for security requirements from natura language artifacts](https://github.com/RealsearchGroup/SRD)
-  - [The Role Extraction and Database Enforcement (REDE) framework for extracting database Access Control policies from natural language Artifacts](https://github.com/RealsearchGroup/REDE)
+## Research contributions
 
-*(Image Attribtion: 991joseph, CC0, via Wikimedia Commons)*
-  <!-- Image Attribution: 991joseph, CC0, via Wikimedia Commons -->
+- [The Security Requirements Discoverer (SRD) framework for discovering goals for security requirements from natura language artifacts](https://github.com/RealsearchGroup/SRD)
+- [The Role Extraction and Database Enforcement (REDE) framework for extracting database Access Control policies from natural language Artifacts](https://github.com/RealsearchGroup/REDE)

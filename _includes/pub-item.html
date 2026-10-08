@@ -1,0 +1,6 @@
+{% assign pub = include.pub %}
+<li class="pub" data-year="{{ pub.year }}" data-type="{{ pub.type }}" data-search="{{ pub.title | escape }} {{ pub.authors | escape }} {{ pub.venue | escape }} {{ pub.year }}">
+    <div class="pub-title">{% if pub.link %}<a href="{{ pub.link }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</div>
+    <div class="pub-authors">{{ pub.authors }}</div>
+    <div class="pub-venue">{{ pub.venue }}</div>
+</li>

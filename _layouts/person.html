@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% assign person = page %}
+{% assign role_name = "" %}
+{% assign role_is_list = false %}
+{% for r in site.roles %}{% if r.key == person.role %}{% assign role_name = r.single | default: r.name %}{% assign role_is_list = r.list %}{% endif %}{% endfor %}
+
+<section class="person-header">
+    {% include avatar.html person=person size="xl" %}
+    <div class="person-header-text">
+        <h1>{{ person.name }}</h1>
+        {% if person.position %}<p class="person-position">{{ person.position }}</p>{% endif %}
+        {% if role_is_list != true or person.joined or person.left %}
+        <p class="person-role">{% if role_is_list != true %}{{ role_name }}{% endif %}{% if person.joined or person.left %}{% if role_is_list != true %} &middot; {% endif %}{{ person.joined }}{% if person.joined and person.left %}&ndash;{% endif %}{{ person.left }}{% endif %}</p>
+        {% endif %}
+        {% if person.now %}<p class="person-now">{{ person.now }}</p>{% endif %}
+        {% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}
+        {% include person-links.html person=person %}
+    </div>
+</section>
+
+{{ content }}
+
+{% include person-pubs.html person=person %}

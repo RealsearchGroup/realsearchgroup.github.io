@@ -1,0 +1,1 @@
+{%- assign img_src = include.src -%}{%- assign img_c = img_src | slice: 0, 1 -%}{%- if img_src contains '://' -%}{{ img_src }}{%- elsif img_c == '/' -%}{{ site.base }}{{ img_src }}{%- else -%}{{ site.base }}/{{ img_src }}{%- endif -%}

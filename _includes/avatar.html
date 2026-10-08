@@ -1,0 +1,14 @@
+{% comment %}
+Round profile photo, or a Google-style initials badge (coloured circle, white letters)
+when the person has no photo. The colour is picked from the name, so it stays the same.
+Usage: {% include avatar.html person=person size="lg" %}   (size: sm | md | lg | xl)
+{% endcomment %}
+{% assign person = include.person %}
+{% assign size = include.size | default: "md" %}
+{% if person.image %}
+    <img class="avatar avatar-{{ size }}" src="{{ person.image | prepend: site.base }}" alt="{{ person.name }}" loading="lazy">
+{% else %}
+    {% assign parts = person.name | split: " " %}
+    {% assign tone = person.name.size | modulo: 8 %}
+    <span class="avatar avatar-{{ size }} avatar-initials tone-{{ tone }}" aria-label="{{ person.name }}">{{ parts.first | slice: 0, 1 | upcase }}{{ parts.last | slice: 0, 1 | upcase }}</span>
+{% endif %}

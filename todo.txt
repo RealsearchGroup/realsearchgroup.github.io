@@ -1,9 +1,0 @@
-reference link: https://github.com/uwsampa/research-group-web/
-
-ToDos
-- about/join/contact page
-- existing/new students guideline page 
-
-
-Dump
-{{ entry.fields['month']|monthname }}

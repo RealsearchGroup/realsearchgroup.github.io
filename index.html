@@ -2,25 +2,9 @@
 layout: default
 title: Home
 notitle: true
-
-# groups of columns of {roles: list, width: num, image: bool}
-role-tables:
-- - roles: [faculty, postdoc, staff]
-    width: 4
-    image: true
-  - roles: [grad]
-    width: 8
-    image: true
-- - roles: [collab, ugrad, ugrad-alum]
-    width: 5
-    image: false
-  - roles: [alum]
-    width: 7
-    image: false
-
 ---
 
-<div class="jumbotron">
+<div class="jumbotron hero">
     <p>
         The Realsearch group envisions a future where trustworthy software-intensive systems improve the quality of people's lives. These systems will be created by a diverse community of software engineers that will employ methodologies based upon sound scientific research that is disseminated through freely-available, open resources. We envision software developers and researchers partnering to improve the capability of the software industry to efficiently produce trustworthy systems.
     </p>
@@ -44,7 +28,7 @@ role-tables:
 
 <section>
     <h2>Research</h2>
-    <div class="card-columns">
+    <div class="card-grid">
         {% comment %}
         Sort the projects by date, putting those without dates last
         {% endcomment %}
@@ -58,17 +42,7 @@ role-tables:
     </div>
 </section>
 
-<div id="people">
+<section id="people">
     <h2>People</h2>
-    {% for role-table in page.role-tables %}
-        <section class="people row justify-content-between">
-            {% for role-column in role-table %}
-                <div class="col-md-{{ role-column.width }}">
-                    {% for role in role-column.roles %}
-                        {% include role-people.html role=role image=role-column.image %}
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </section>
-    {% endfor %}
-</div>
+    {% include people-directory.html %}
+</section>

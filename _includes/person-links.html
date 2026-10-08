@@ -1,0 +1,7 @@
+{% assign p = include.person %}
+<p class="person-links">
+    {% if p.website %}<a class="btn-pill" href="{{ p.website }}" target="_blank" rel="noopener"><span class="fa fa-fw fa-globe"></span> Website</a>{% endif %}
+    {% if p.linkedin %}<a class="btn-pill" href="{{ p.linkedin }}" target="_blank" rel="noopener"><span class="fa fa-fw fa-linkedin"></span> LinkedIn</a>{% endif %}
+    {% if p.github %}<a class="btn-pill" href="https://github.com/{{ p.github }}" target="_blank" rel="noopener"><span class="fa fa-fw fa-github"></span> GitHub</a>{% endif %}
+    {% if p.scholar %}<a class="btn-pill" href="{{ p.scholar }}" target="_blank" rel="noopener"><span class="fa fa-fw fa-graduation-cap"></span> Google Scholar</a>{% endif %}
+</p>

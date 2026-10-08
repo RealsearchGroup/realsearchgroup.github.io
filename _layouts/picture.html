@@ -1,5 +1,21 @@
 ---
 layout: default
 ---
+{% capture hero_src %}{% include img-url.html src=page.image %}{% endcapture %}
 
-{{ content }}
+<article class="picture-page">
+    <header class="picture-head">
+        <h1 class="entry-title">{{ page.title }}</h1>
+        {% if page.subtitle != null and page.subtitle != "" %}<p class="entry-subtitle">{{ page.subtitle }}</p>{% endif %}
+    </header>
+    {% if page.image %}
+    <figure class="picture-figure">
+        <img src="{{ hero_src | strip }}" alt="{{ page.title }}">
+    </figure>
+    {% endif %}
+    <div class="picture-body entry-body">
+        {% if page.description %}<div class="entry-lead">{{ page.description | markdownify }}</div>{% endif %}
+        {{ content }}
+        <p><a href="{{ site.base }}/pics.html">&laquo; Back to gallery</a></p>
+    </div>
+</article>

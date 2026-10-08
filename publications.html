@@ -3,39 +3,29 @@ layout: default
 title: Publications
 ---
 
-<script type="text/javascript" src="{{ site.base }}/js/data.js"></script>
-<script>
-    $(document).ready(function () {
+{% assign all_pubs = site.publications | sort: "year" | reverse %}
 
-        $('#example').DataTable({
-            data: dataSet,
-            columns: [
-                {
-                    title: 'Title', data: "title", defaultContent: "", width: '45%',
-                    "render": function (data, type, row, meta) {
-                        if (type === 'display') {
-                            data = '<a href="' + row.url + '">' + data + '</a>';
-                        }
+<div class="pub-controls" id="pub-controls">
+    <label class="sr-only" for="pub-search">Search publications</label>
+    <input type="search" id="pub-search" class="pub-search" placeholder="Search title, author, venue, year&hellip;" autocomplete="off">
+    <label class="sr-only" for="pub-year">Year</label>
+    <select id="pub-year" class="pub-select">
+        <option value="">All years</option>
+        {% assign years = all_pubs | map: "year" | uniq %}
+        {% for y in years %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+    </select>
+    <label class="sr-only" for="pub-type">Type</label>
+    <select id="pub-type" class="pub-select">
+        <option value="">All types</option>
+        <option value="inproceedings">Conference / workshop</option>
+        <option value="article">Journal</option>
+        <option value="book">Book</option>
+    </select>
+</div>
+<p class="pub-count" id="pub-count" aria-live="polite">{{ all_pubs.size }} publications</p>
 
-                        return data;
-                    }
-                },
-                { title: 'Author', data: "author", defaultContent: "", width: '25%', },
-                { title: 'Year', data: "year", defaultContent: "", width: '5%', },
-                // { title: "Type" },
-                { title: "Venue", data: 'venue', defaultContent: "", width: '25%', }
-            ],
-            "order": [[2, "desc"]]
-        });
-    });
-</script>
-
-<table id="example" class="stripe display compact row-border hover" style="width:100%">
-</table>
-
-
-<!-- <p>
-    <a href="{{ site.base }}/bib/pubs.bib">Download BibTeX.</a>
-</p>
-
-{% include pubs.html %} -->
+<div id="pub-results" data-pubs>
+    {% include pub-groups.html pubs=all_pubs %}
+</div>
+<p class="pub-empty" id="pub-empty" hidden>No publications match.</p>
+<nav class="pager" aria-label="Publications pages" hidden></nav>

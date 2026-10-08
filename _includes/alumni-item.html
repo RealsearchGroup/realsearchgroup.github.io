@@ -1,0 +1,7 @@
+{% assign person = include.person %}
+<li class="alumni-item">
+    <a class="alumni-name" href="{{ site.base }}{{ person.url }}">{{ person.name }}</a>
+    {% if person.position %}<span class="alumni-position">{{ person.position }}</span>{% endif %}
+    {% if person.joined or person.left %}<span class="alumni-years">{{ person.joined }}{% if person.joined and person.left %}&ndash;{% endif %}{{ person.left }}</span>{% endif %}
+    {% if person.now %}<span class="alumni-now">{{ person.now }}</span>{% endif %}
+</li>

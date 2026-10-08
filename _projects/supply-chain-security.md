@@ -19,7 +19,7 @@ image: /pictures/supply-chain-security.jpg
 link: false
 ---
 
-**Research Contributions**:
+## Research contributions
 
 - Identify weak links signals in the npm dependency graph.
   
