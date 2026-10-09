@@ -41,7 +41,7 @@ Upload your photo to `img/people/` first. Leave out any line you don't need. If 
 ```yaml
 ---
 name: Jane Doe
-role: grad            # faculty | postdoc | grad | alum | ms   (ms = undergraduate/masters alumnus who did not do a PhD here)
+role: grad            # faculty | postdoc | grad | alum | ms | reu   (ms = undergraduate/masters alumnus who did not do a PhD here; reu = REU student)
 image: /img/people/jane.jpg
 website: https://example.com
 linkedin: https://www.linkedin.com/in/janedoe/
