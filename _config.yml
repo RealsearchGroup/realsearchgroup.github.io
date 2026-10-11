@@ -29,6 +29,10 @@ roles:
     name: Undergraduate and Masters Alumni
     single: Undergraduate / Masters Alum
     list: true
+  - key: reu
+    name: REU Students
+    single: REU Student
+    list: true
 
 # Show the Active/Sleeping badge on research project cards (set to true to bring it back).
 show_project_status: false

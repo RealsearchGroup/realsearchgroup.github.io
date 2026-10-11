@@ -5,7 +5,7 @@ require 'yaml'
 require 'date'
 
 ROOT = File.expand_path('..', __dir__)
-ROLES = %w[faculty postdoc grad ms alum staff collab ugrad ugrad-alum].freeze
+ROLES = %w[faculty postdoc grad ms alum reu staff collab ugrad ugrad-alum].freeze
 TYPES = %w[inproceedings article book].freeze
 
 @errors = []
@@ -40,9 +40,9 @@ Dir[File.join(ROOT, '_people', '*.md')].sort.each do |f|
   people << d
   err(f, 'missing "name"') if blank?(d['name'])
   if blank?(d['role'])
-    err(f, 'missing "role" (one of: faculty, postdoc, grad, ms, alum)')
+    err(f, 'missing "role" (one of: faculty, postdoc, grad, ms, alum, reu)')
   elsif !ROLES.include?(d['role'])
-    err(f, %(role "#{d['role']}" is not valid; use faculty, postdoc, grad, ms or alum))
+    err(f, %(role "#{d['role']}" is not valid; use faculty, postdoc, grad, ms, alum or reu))
   end
   if d['image'] && d['image'].to_s.start_with?('/') &&
      !File.exist?(File.join(ROOT, d['image'].to_s))
